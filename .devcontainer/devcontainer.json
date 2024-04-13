@@ -1,0 +1,38 @@
+{
+  "name": "esp32_speaker",
+  // Select between image and build properties to pull or build the image.
+  // "image": "docker.io/espressif/idf-rust:esp32_latest",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "ESP_BOARD": "esp32"
+    }
+  },
+  // "image": "docker-registry.varmeco.de/picon-dev-rust:0.4.2",
+  "runArgs": [
+    "--privileged"
+  ],
+  "mounts": [
+    "source=/dev,target=/dev,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        "yzhang.markdown-all-in-one",
+        "marus25.cortex-debug",
+        "ms-vscode.cpptools",
+        "twxs.cmake"
+      ]
+    }
+  },
+  "remoteUser": "root"
+  // "forwardPorts": [
+  //   8000,
+  //   3333
+  // ],
+  // "workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/esp32_speaker,type=bind,consistency=cached",
+  // "workspaceFolder": "/home/esp/esp32_speaker"
+}

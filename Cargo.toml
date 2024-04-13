@@ -1,0 +1,57 @@
+[package]
+name = "esp32-example"
+version = "0.1.0"
+authors = ["leonhard wiedmann <leonhard.wiedmann@varmeco.de"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.66"
+
+[profile.release]
+opt-level = "s"
+panic = 'abort'
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "s"
+
+[lib]
+path = "src/lib.rs"
+test = true         # Is tested by default.
+
+[features]
+
+all = ["nightly", "experimental", "embassy"]
+nightly = ["embedded-svc/nightly", "esp-idf-svc/nightly"]
+experimental = ["embedded-svc/experimental", "esp-idf-svc/experimental"]
+embassy = [
+    "esp-idf-hal/embassy-sync",
+    "esp-idf-hal/critical-section",
+    "esp-idf-svc/embassy-time-driver",
+]
+
+[dependencies]
+log = { version = "0.4.17", optional = true, default-features = false }
+esp-idf-sys = { version = "0.34", default-features = false, features = [
+    "std",
+    "native",
+    "binstart",
+] }
+esp-idf-hal = { version = "0.43", default-features = false, features = [
+    "std",
+    "alloc",
+] }
+esp-idf-svc = { version = "0.48", default-features = false, features = [
+    "std",
+    "alloc",
+] }
+embedded-svc = { version = "0.27", default-features = false, features = [
+    "std",
+    "alloc",
+] }
+cpp_example = { path = "component" }
+
+[dev-dependencies]
+pretty_assertions = "1"
+
+[build-dependencies]
+embuild = "0.31.2"

@@ -1,0 +1,23 @@
+{
+  "idf.adapterTargetName": "esp32",
+  "cmake.sourceDirectory": "/workspaces/picon-mio/IO_API_submodules/api-io-esp-efm/efm32_ctrl",
+  "rust-analyzer.check.allTargets": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnType": true,
+  "lldb.executable": "/usr/bin/lldb",
+  "files.watcherExclude": {
+    "**/target/**": true
+  },
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.checkOnSave.allTargets": false,
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "rust-analyzer.linkedProjects": [
+    "./component/Cargo.toml",
+    "Cargo.toml"
+  ],
+}
